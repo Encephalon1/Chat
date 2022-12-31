@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Личный кабинет</p>
+<a class="nav-link" href="{% url 'avatar_load' request.user.id %}">Загрузить аватарку</a>
+
+
+{% if img_obj %}
+  <img src="{{ img_obj.picture.url}}" alt="connect" style="max-height:300px">
+{% endif %}
+
+</body>
+</html>
