@@ -4,6 +4,7 @@ from django.conf import settings
 from django.urls import path
 from rest_framework import routers
 from .views import *
+from . import views
 
 router = routers.DefaultRouter()
 router.register(r'chats', GroupChatViewSet)
@@ -14,5 +15,9 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('create/<int:pk>', LoadAvatar.as_view(), name='avatar_load'),
     path('img/<int:pk>', LoadAvatar.home, name='home'),
-    path('upload/<int:pk>', LoadAvatar.file_upload)
+    path('upload/<int:pk>', LoadAvatar.file_upload),
+    path('chat/', views.index, name='index'),
+    path('chat/<str:room_name>/', views.room, name='room'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

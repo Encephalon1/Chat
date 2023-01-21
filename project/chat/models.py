@@ -7,7 +7,7 @@ class MyUser(AbstractUser):
     picture = models.ImageField(upload_to='images/', default=None)
 
     def get_absolute_url(self):
-        return reverse('profile', args=[str(self.id)])
+        return reverse('profile', args=[self.id])
 
 
 class GroupChat(models.Model):

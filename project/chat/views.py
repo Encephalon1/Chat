@@ -9,6 +9,7 @@ from .forms import Avatar
 
 
 class IndexView(LoginRequiredMixin, TemplateView):
+    model = MyUser
     template_name = 'index.html'
 
 
@@ -36,3 +37,10 @@ class LoadAvatar(UpdateView):
             return HttpResponse('img/')
         return JsonResponse({'post': 'fasle'})
 
+
+def index(request):
+    return render(request, 'chat/index.html')
+
+
+def room(request, room_name):
+    return render(request, 'chat/room.html', {'room_name': room_name})
